@@ -1,6 +1,3 @@
-
-Sure, here’s a detailed README file for your "Lunch Tinder" project, including a description, features, technologies used, and more:
-
 # Lunch Tinder 🍽️
 Welcome to Lunch Tinder, a web application developed to help employees decide where to go for lunch. This project was created by myself and another intern during our internship. It leverages various technologies to provide an intuitive and efficient user experience.
 
