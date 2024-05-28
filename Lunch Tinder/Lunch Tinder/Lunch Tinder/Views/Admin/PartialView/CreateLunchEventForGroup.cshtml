@@ -1,0 +1,109 @@
+﻿@model Lunch_Tinder.ViewModels.VMLunchEventForGroupModel;
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="~/css/CreateLunchEventForGroup.css" asp-append-version="true"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/createevent.js" asp-append-version="true"></script>
+
+@using (Html.BeginForm("CreateEvent", "Event", FormMethod.Post))
+{
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Create Event for @Model?.Group?.GroupName</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="@Model.Group.GroupName" />
+                    <input type="hidden" asp-for="@Model.Event.EventId" />
+                    <input type="hidden" asp-for="@Model.Event.Name" />
+                    <input type="hidden" asp-for="@Model.Event.Description" />
+                    <input type="hidden" asp-for="@Model.Event.Status" />
+                    <input type="hidden" asp-for="@Model.Event.VenueWinner" />
+                    <input type="hidden" id="EventStartDateTime" asp-for="@Model.EventStartDateTime" />
+                    <input type="hidden" id="VotingStartTime" asp-for="@Model.VoteStartDateTime" />
+                    <input type="hidden" id="VoteEndDateTime" asp-for="@Model.VoteEndDateTime" />
+                    <input type="hidden" id="selectedVenues" name="SelectedVenues" />
+
+                    <label for="EventStartDate">Event Date:</label>
+                    <input type="date" id="EventStartDate" name="EventStartDate" required min="@DateTime.Now.ToString("yyyy-MM-dd")" max="2050-01-01">
+
+
+                    <label for="EventStartTime">Event Time:</label>
+                     <select id="EventStartTime" name="EventStartTime" class="form-control" required onchange="checkEventTime()">
+                        <option value="">Select a time</option>
+                        @for (int hour = 0; hour < 24; hour++)
+                        {
+                            for (int minute = 0; minute < 60; minute += 15)
+                            {
+                                // Skip the option for 24:00
+                                if (hour == 24 && minute == 00)
+                                {
+                                    continue;
+                                }
+                                <option value="@string.Format("{0:D2}:{1:D2}", hour, minute)">@string.Format("{0:D2}:{1:D2}", hour, minute)</option>
+                            }
+                        }
+                    </select>
+                    <small id="timeValidationMessage" class="form-text text-danger"></small>
+
+                    <label for="VotingEndDate">Voting End Date:</label>
+                    <input type="date" id="VotingEndDate" name="VotingEndDate" required min="@DateTime.Now.ToString("yyyy-MM-dd")" max="2050-01-01" onchange="">
+
+                    <label for="VotingCloseTime">Voting End Time:</label>
+                    <select id="VotingCloseTime" name="VotingCloseTime" class="form-control" max="" required onchange="compareEventTimeAndVotingCloseTime()">
+                        <option value="">Select a time</option>
+                        @for (int hour = 0; hour < 24; hour++)
+                        {
+                            for (int minute = 0; minute < 60; minute += 15)
+                            {
+                                // Skip the option for 24:00
+                                if (hour == 24 && minute == 00)
+                                {
+                                    continue;
+                                }
+                                <option value="@string.Format("{0:D2}:{1:D2}", hour, minute)">@string.Format("{0:D2}:{1:D2}", hour, minute)</option>
+                            }
+                        }
+                    </select>
+                    <small id="VoteTimeValidationMessage" class="form-text text-danger"></small>
+
+                    <div class="venue-selection">
+                        <select id="restaurant" onchange="enablePlusButton()" >
+                            <option value="">Select a restaurant</option>
+                            @if (Model.RestaurantOptions != null)
+                            {
+                                foreach (var restaurant in Model.RestaurantOptions)
+                                {
+                                    <option  id="SelectedRestaurant" value="@restaurant.RestaurantName">@restaurant.RestaurantName</option>
+                                }
+                            }
+                        </select>
+                        <button id="plusButton" class="show-button" onclick="addVenueToTable()" disabled>+</button>
+                    </div>
+                    <small id="RestaurantValidationMessage" class="form-text text-danger"></small>
+
+                    <div class="venue-table" id="venueTable">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Venue</th>
+                                </tr>
+                            </thead>
+                            <tbody id="venueTableBody">
+                                <!-- Table rows will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeBtn"class="btn btn-secondary" data-dismiss="modal" onclick="cancelEvent()">Close</button>
+                    <button type="submit" id="submitButton" class="btn btn-primary" onclick="convertingDateTimeValuesToUTC('EventStartDate', 'VotingEndDate', 'EventStartTime', 'VotingCloseTime')" disabled>Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

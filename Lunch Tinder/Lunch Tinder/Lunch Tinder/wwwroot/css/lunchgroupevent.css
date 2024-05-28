@@ -1,0 +1,128 @@
+﻿.event-container {
+    background-color: white;
+}
+
+.alert{
+    display: none;
+    text-align: center;
+}
+
+.description {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#customBackButton {
+    margin-top: 10px;
+    padding: 10px 52px;
+    background-color: #004B91;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 10px auto; /* Centers the button horizontally */
+    display: block;
+}
+
+.name-date-container {
+    text-align: center;
+}
+
+.name-date-container h1 {
+    text-decoration: underline;
+    text-decoration-color: #fbbc34;
+    text-decoration-thickness: 3px;
+}
+
+.votinginprogress-panel {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.votingoption-container {
+    padding: 10px;
+    align-items: center;
+}
+
+.votingoption {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.votingoption button {
+    background-color: #ffc106;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.votingoption button:focus {
+    outline:solid 2px;
+    outline-color:green;
+}
+
+.votingoption label {
+    padding-top: 6px;
+    font-size: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.votingstatus-group {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.name-date-container {
+    padding-top: 10px;
+}
+
+.votingoption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.votingoption button {
+    width: 600px;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fbbc34;
+    border-color: #fbbc34;
+    color: #333333;
+    font-weight: bold;
+    border: 0;
+}
+
+.edit-button {
+    margin-top: 10px; /* Add a margin to create space between buttons */
+}
+
+#editbutton {
+    margin-top: 10px;
+    padding: 10px 52px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 10px auto; /* Centers the button horizontally */
+    display: block;
+}
+
+#winner {
+    text-align: center;
+    margin: 10px auto;
+    color: black;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: #fbbc34;
+    text-decoration-thickness: 3px;
+}

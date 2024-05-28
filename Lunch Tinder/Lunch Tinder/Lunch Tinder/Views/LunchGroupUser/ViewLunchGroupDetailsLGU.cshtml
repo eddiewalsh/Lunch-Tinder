@@ -1,0 +1,66 @@
+﻿@model LunchGroup
+
+<link rel="stylesheet" href="~/css/ViewLunchGroupDetailsLGU.css" asp-append-version="true" />
+<script src="~/js/site.js" asp-append-version="true"></script>
+<div class="container">
+    <h1 class="display-4">Group Details</h1>
+    <div class="form-group">
+        <label for="groupName">Lunch Group Name:</label>
+        <input id="groupName" type="text" class="form-control" value="@Model.GroupName" readonly />
+    </div>
+
+    
+    <div class="form-group">
+        <label for="groupDescription">Description:</label>
+        <input id="groupDescription" type="text" class="form-control" value="@Model.Description" readonly />
+    </div>
+    
+        <div class="UpcEventsSection">
+            <h3>Upcoming Events</h3>
+        @if (Model.Events.Any())
+        {
+            <ul class="list-group">
+                @foreach (var evt in Model.Events.OrderByDescending(e => e.EventStartTime))
+                {
+                    <li class="list-group-item">
+                        <a href="@Url.Action("DisplayEvent", "Event", new { eventId = evt.EventId })">@evt.Name</a>
+                        - @evt.EventStartTime.ToString("yyyy-MM-dd")
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No upcoming events found.</p>
+        }
+        </div>
+    
+    <div class="GroupUserSection">
+        <h3>Group Users</h3>
+        <ul class="list-group list-unstyled">
+            <li class="list-group-item bg-primary text-white">
+                <span class="font-weight-bold">Name</span> | <span class="font-weight-bold">Email Address</span>
+            </li>
+            @if (Model.Users != null && Model.Users.Any())
+            {
+                foreach (var user in Model.Users)
+                {
+                    <li class="list-group-item">
+                        <span>@user.UserName</span> | <span>@user.EmailAddress</span>
+                            @if (user.UserType=="ADMIN")
+                            {
+                                <span class="admin-crown">&#x1f451;</span>
+                            }
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="list-group-item">
+                    <p>No users exist in the group.</p>
+                </li>
+            }
+        </ul>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+2023-06-30 09:05:52.5023|INFO|Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager|User profile is available. Using 'C:\Users\ewalsh\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest. 
+2023-06-30 09:05:55.7899|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (28ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1 
+2023-06-30 09:05:55.8299|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (21ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]'); 
+2023-06-30 09:05:55.8299|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT 1 
+2023-06-30 09:05:55.8299|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]'); 
+2023-06-30 09:05:55.8574|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId]; 
+2023-06-30 09:05:55.8767|INFO|Microsoft.EntityFrameworkCore.Migrations|No migrations were applied. The database is already up to date. 
+2023-06-30 09:05:56.2261|INFO|Microsoft.Hosting.Lifetime|Now listening on: https://localhost:7215 
+2023-06-30 09:05:56.2261|INFO|Microsoft.Hosting.Lifetime|Now listening on: http://localhost:5176 
+2023-06-30 09:05:56.2261|INFO|Microsoft.Hosting.Lifetime|Application started. Press Ctrl+C to shut down. 
+2023-06-30 09:05:56.2261|INFO|Microsoft.Hosting.Lifetime|Hosting environment: Development 
+2023-06-30 09:05:56.2261|INFO|Microsoft.Hosting.Lifetime|Content root path: C:\Users\ewalsh\source\repos\Lunch Tinder\Lunch Tinder\Lunch Tinder\ 
+2023-06-30 09:05:56.9737|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/ - - 
+2023-06-30 09:05:57.0921|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'Lunch_Tinder.Controllers.UserController.Login (Lunch Tinder)' 
+2023-06-30 09:05:57.1104|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "Login", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Login(System.String) on controller Lunch_Tinder.Controllers.UserController (Lunch Tinder). 
+2023-06-30 09:05:57.1640|INFO|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|Executing ViewResult, running view Login. 
+2023-06-30 09:05:57.3959|INFO|Microsoft.AspNetCore.Mvc.ViewFeatures.ViewResultExecutor|Executed ViewResult - view Login executed in 234.0405ms. 
+2023-06-30 09:05:57.3959|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Executed action Lunch_Tinder.Controllers.UserController.Login (Lunch Tinder) in 289.598ms 
+2023-06-30 09:05:57.3959|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executed endpoint 'Lunch_Tinder.Controllers.UserController.Login (Lunch Tinder)' 
+2023-06-30 09:05:57.5445|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/_vs/browserLink - - 
+2023-06-30 09:05:57.5445|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/css/login.css?v=TAtPYGzs3koDlRBFISayeBqbg0sFA6B1noT9LxjkWIs - - 
+2023-06-30 09:05:57.5445|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/_framework/aspnetcore-browser-refresh.js - - 
+2023-06-30 09:05:57.5559|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 10.5582ms 
+2023-06-30 09:05:57.5559|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/ - - - 200 - text/html;+charset=utf-8 585.1358ms 
+2023-06-30 09:05:57.5559|INFO|Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware|The file /css/login.css was not modified 
+2023-06-30 09:05:57.5559|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/css/login.css?v=TAtPYGzs3koDlRBFISayeBqbg0sFA6B1noT9LxjkWIs - - - 304 - text/css 14.2573ms 
+2023-06-30 09:05:57.5960|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 51.4219ms 
+2023-06-30 09:06:04.0082|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/swagger/index.html - - 
+2023-06-30 09:06:04.1097|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/swagger/index.html - - - 200 - text/html;charset=utf-8 101.4199ms 
+2023-06-30 09:06:04.1512|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/_framework/aspnetcore-browser-refresh.js - - 
+2023-06-30 09:06:04.1512|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/_framework/aspnetcore-browser-refresh.js - - - 200 11994 application/javascript;+charset=utf-8 0.3676ms 
+2023-06-30 09:06:04.1512|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/_vs/browserLink - - 
+2023-06-30 09:06:04.1627|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 8.4604ms 
+2023-06-30 09:06:04.3035|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/swagger/v1/swagger.json - - 
+2023-06-30 09:06:04.3781|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request finished HTTP/2 GET https://localhost:7215/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 74.5885ms 
+2023-06-30 09:06:10.8648|INFO|Microsoft.AspNetCore.Hosting.Diagnostics|Request starting HTTP/2 GET https://localhost:7215/api/LunchTinder - - 
+2023-06-30 09:06:10.8648|INFO|Microsoft.AspNetCore.Routing.EndpointMiddleware|Executing endpoint 'Lunch_Tinder.Controllers.LunchTinderController.Get (Lunch Tinder)' 
+2023-06-30 09:06:10.8648|INFO|Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker|Route matched with {action = "Get", controller = "LunchTinder"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Get() on controller Lunch_Tinder.Controllers.LunchTinderController (Lunch Tinder). 
+2023-06-30 09:06:13.5874|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (55ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[EventId], [t].[Description], [t].[EventEndTime], [t].[EventStartTime], [t].[Name], [t].[VotingEndTime], [t].[VotingStartTime], [t0].[EventsEventId], [t0].[RestaurantOptionsRestaurantID], [t0].[RestaurantID], [t0].[RestaurantDescription], [t0].[RestaurantName]
+FROM (
+    SELECT TOP(1) [e].[EventId], [e].[Description], [e].[EventEndTime], [e].[EventStartTime], [e].[Name], [e].[VotingEndTime], [e].[VotingStartTime]
+    FROM [Events] AS [e]
+    WHERE [e].[EventId] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [e0].[EventsEventId], [e0].[RestaurantOptionsRestaurantID], [r].[RestaurantID], [r].[RestaurantDescription], [r].[RestaurantName]
+    FROM [EventRestaurant] AS [e0]
+    INNER JOIN [Restaurants] AS [r] ON [e0].[RestaurantOptionsRestaurantID] = [r].[RestaurantID]
+) AS [t0] ON [t].[EventId] = [t0].[EventsEventId]
+ORDER BY [t].[EventId], [t0].[EventsEventId], [t0].[RestaurantOptionsRestaurantID] 
+2023-06-30 09:06:15.4597|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (2ms) [Parameters=[@___event_EventId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [v].[VoteId], [v].[EventVoteID], [v].[RestaurantVoteID], [v].[UserVoteID]
+FROM [Votes] AS [v]
+WHERE [v].[EventVoteID] = @___event_EventId_0 

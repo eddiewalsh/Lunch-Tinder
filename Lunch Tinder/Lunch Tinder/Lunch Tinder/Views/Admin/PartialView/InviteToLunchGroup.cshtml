@@ -1,0 +1,83 @@
+﻿@model Lunch_Tinder.ViewModels.VMInviteLG;
+
+<link rel="stylesheet" href="~/css/InviteToLunchGroup.css" asp-append-version="true" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<div class="modal fade" id="InviteLGModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="modalheader" class="modal-header">
+                <h5 class="modal-title" id="AddJobLabel" style="padding-left: 20px;">Invite a user to @Model?.Group?.GroupName</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="custom-alert">
+                <div class="alert-content">
+                    <p id="alert-message"></p>
+                </div>
+            </div>
+                <div class="error-message">
+                    <span id="emailusernameValidationMessage"></span>
+                </div>
+            <div class="modal-body">
+                <form asp-action="InviteToLunchGroup" asp-controller="Admin" method="post" id="createForm">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="hidden" asp-for="@Model.Group.GroupId" />
+                        <input type="hidden" asp-for="@Model.Group.GroupName" />
+                        <input type="hidden" asp-for="@Model.Group.GroupName" />
+                        <label asp-for="UserNameEmail">Username / Email Address </label>
+                        <input asp-for="UserNameEmail" id="userinput" class="form-control" placeholder="Insert username or email of a registered user" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="InviteBttn" onclick="InviteUserSubmission()"  class="btn btn-primary" disabled>Invite</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+const button = document.getElementById("InviteBttn");
+const usernameemailinputt = document.getElementById("userinput");
+
+const NameEmailValidationMessage = document.getElementById("emailusernameValidationMessage");
+
+usernameemailinputt.addEventListener("input", () => {
+    let emailusername = usernameemailinputt.value;
+
+    if (emailusername.trim() === "") {
+        NameEmailValidationMessage.textContent = "";
+        button.disabled = true;
+        return;
+    }
+
+    fetch(`/Admin/CheckUsernameEmail?emailusername=${emailusername}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.userExists) {
+                NameEmailValidationMessage.textContent = "";
+                button.disabled = false;
+            } else {
+                NameEmailValidationMessage.textContent = "Email / Username cannot be found";
+                button.disabled = true;
+            }
+        })
+        .catch(error => {
+            console.error("Error occurred while checking email:", error);
+        });
+});
+
+
+function InviteUserSubmission(){
+    var modalHeader = document.getElementById("modalheader");
+    var modalHeaderText = document.getElementById("AddJobLabel");
+
+    modalHeader.style.backgroundColor = 'green';
+    modalHeaderText.textContent = "Invitation Sent";
+    modalHeaderText.style.color = 'white';
+}
+</script>

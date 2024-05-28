@@ -1,0 +1,61 @@
+﻿.venue-table {
+    display: none;
+    margin-top: 20px;
+}
+
+.venue-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.venue-table th,
+.venue-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.venue-selection {
+    text-align: left;
+    margin-top: 1em;
+}
+
+.modal-body label {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.modal-body input[type="date"],
+.modal-body input[type="time"],
+.modal-body select {
+    display: inline-block;
+    width: 200px;
+    margin-top: 10px;
+   font-size: 16px;
+}
+
+.modal-body .form-text {
+    display: block;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.add-button {
+    display: none;
+}
+
+.show-button {
+    display: inline-block;
+}
+
+#eventDate {
+    display: inline-block;
+    width: 200px;
+}
+
+
+
+
+

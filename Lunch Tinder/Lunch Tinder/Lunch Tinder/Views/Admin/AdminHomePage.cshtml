@@ -1,0 +1,116 @@
+﻿@using Lunch_Tinder.ViewModels;
+@model AdminViewModel
+<link rel="stylesheet" href="~/css/AdminHome.css" asp-append-version="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div id="LunchCard" class=" container-fluid text-center">
+    <h1 class="display-4 LGtitle">Lunch Groups</h1>
+    @if (Model.LunchGroups == null || !Model.LunchGroups.Any())
+    {
+        <div class="EmptyLG">
+            <p>You are not part of any lunch groups</p>
+        </div>
+
+    }
+    <div class="card-deck">
+     
+            @foreach (var group in Model.LunchGroups)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@group.GroupName</h5>
+                        <a id="Openbtn" href="@Url.Action("DisplayGroups", "Admin", new { groupName = group.GroupName })" class="btn btn-warning">Open</a>
+                    </div>
+                </div>
+            }
+        
+    </div>
+</div>
+
+<div id="EventCard" class="container-fluid text-center">
+    <h1 class="display-4">Lunch Events</h1>
+    @if (Model.Events == null || !Model.Events.Any())
+    {
+        <p>You don't have any lunch events planned</p>
+    }
+    <div class="card-deck">
+         @foreach (Event evnt in Model.Events)
+            {
+                <div class="card card-columns mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@evnt.Name</h5>
+                        @if (evnt.VotingStartTime.DateTime <= DateTime.UtcNow && evnt.VotingEndTime.DateTime > DateTime.UtcNow)
+                        {
+                            <p class="card-text" style="color: green; font-weight: bold;">Voting In Progress</p>
+                        }
+                        else if (evnt.VotingStartTime.DateTime > DateTime.UtcNow)
+                        {
+                            <p class="card-text" style="color:#004B91;">Voting Opens at: @evnt.ConvertOffsetToLocalTime(evnt.VotingStartTime)</p>
+                        }
+                        else if (evnt.VotingEndTime.DateTime <= DateTime.UtcNow)
+                        {
+    
+                            if(string.IsNullOrWhiteSpace(evnt.VenueWinner))
+                            {
+                              <p class="card-text" style="color: green; font-weight: bold;">Votes Are Being Counted!</p>
+                            }
+                            else
+                            {
+                              <p class="card-text">Venue: &#x1f451; @evnt.VenueWinner</p>
+                            }
+                             <p class="card-text">Event begins at:  @evnt.ConvertOffsetToLocalTime(evnt.EventStartTime)</p>
+                             <p class="card-text" style="color: red; font-weight:bold; ">Voting Closed</p>
+                        }
+                        <a id="Eventbtn" href="@Url.Action("DisplayEvent", "Event", new { eventid = evnt.EventId })" class="btn btn-warning">Enter</a>
+                    </div>
+                </div>
+            }
+    </div>
+</div>
+
+<div id="UserListTable" class="text-center">
+    <h1 class="display-4">List of Users</h1>
+    @if (Model.Users == null || !Model.Users.Any())
+    {
+        <p>No Users exist</p>
+    }
+    else
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>User Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Users)
+                {
+                    <tr>
+                        <td>@user.UserName</td>
+                        <td>@user.EmailAddress</td>
+                        <td>@user.UserType?.ToLower()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    }
+</div>
+<script>
+    
+    const voteStartTimeElements = document.querySelectorAll('.voteStartTime');
+    voteStartTimeElements.forEach(function(element) {
+        let voteStartTime = element.getAttribute('data-value');
+        let convertedVoteTime = convertUtcToLocal(voteStartTime);
+        element.textContent = convertedVoteTime;
+  });
+
+    const eventStartTimeElements = document.querySelectorAll('.eventStartTime');
+    eventStartTimeElements.forEach(function(element) {
+        let eventStartTime = element.getAttribute('data-value');
+        let convertedEventTime = convertUtcToLocal(eventStartTime);
+        element.textContent = convertedEventTime;
+  });
+</script>

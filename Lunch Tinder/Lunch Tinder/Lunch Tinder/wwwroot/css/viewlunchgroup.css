@@ -1,0 +1,84 @@
+﻿.sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 100px;
+    padding-right: 10px;
+    width: 200px;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+fieldset {
+    border: 2px solid #fbbc34;
+    padding: 0 20px 0 20px;
+    border-width: 3px;
+}
+
+.introduction {
+    position: absolute;
+    left: 2px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding: 30px 220px 20px 90px;
+}
+
+.description {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.members {
+    margin-bottom: 20px;
+    width: 200px;
+    margin-left: 100px;
+    float: right;
+}
+
+.members h2 {
+    color: black;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+    text-decoration-color: #fbbc34;
+    text-decoration-thickness: 7px;
+}
+
+.member-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.member-list li {
+    color: black;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.event {
+    margin: 0 auto;
+    text-align: left;
+    max-width: 400px;
+    padding-top: 45px;
+}
+
+.event h3 {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fbbc34;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+.event p {
+    color: black;
+    font-size: 14px;
+    line-height: 1.5;
+}

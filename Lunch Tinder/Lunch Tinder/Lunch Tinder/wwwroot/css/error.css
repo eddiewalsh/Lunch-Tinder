@@ -1,0 +1,29 @@
+﻿
+.error-container {
+    text-align:center;
+}
+
+.message-container {
+    padding-top: 20px;
+    text-decoration: underline;
+    text-decoration-color: #fbbc34;
+    text-decoration-thickness: 3px;
+}
+
+.image-container{
+    padding: 20px;
+}
+
+.button-container{
+    padding-top: 30px;
+}
+
+.button-container button {
+    margin-top: 10px;
+    padding: 10px 52px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}

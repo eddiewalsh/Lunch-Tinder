@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #003366;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto 0;
+            background-color: #ffffff;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: black;
+            text-decoration: underline;
+            text-decoration-color: #fbbc34;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #fbbc34;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .buttons {
+            padding-left: 130px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>You have been invited to {{lunchgroup}}</h1>
+        <p>{{admin}} has invited you to join {{lunchgroup}}</p>
+        <p>Please click the following button to go to the {{lunchgroup}} page:</p>
+        <div class="buttons">
+            <a href="{{link}}">Join</a>
+        </div>
+    </div>
+</body>
+</html>

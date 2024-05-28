@@ -1,0 +1,91 @@
+﻿@using Lunch_Tinder.ViewModels;
+@model VMLunchEventForGroupModel
+
+<link rel="stylesheet" href="~/css/LunchGroupDetails.css" asp-append-version="true" />
+<script src="~/js/site.js" asp-append-version="true"></script>
+@section Scripts
+{
+   <script src="~/js/site.js" asp-append-version="true"></script>
+}
+
+<div class="container">
+        <h1 class="display-4">Group Details</h1>
+        <div class="form-group">
+            <label for="groupName">Lunch Group Name:</label>
+            <input id="groupName" type="text" class="form-control" value="@Model.Group.GroupName" readonly />
+        </div>
+    
+    <form asp-controller="Admin" asp-action="SaveGroupDescription" method="post">
+        <input type="hidden" asp-for="@Model.Group.GroupId" />
+        <input type="hidden" asp-for="@Model.Group.GroupName" />
+        <div>
+            <h3>
+                <label asp-for="@Model.Group.Description">Group Description</label>
+            </h3>
+            <textarea asp-for="@Model.Group.Description" id="groupDescription" rows="4" class="form-control" oninput="toggleSaveButton()" maxlength="225">@Model.Group.Description</textarea>
+            <button type="submit" id="saveButton" class="btn btn-primary" disabled>Save</button>
+        </div>
+    </form>
+
+    <button class="btn btn-warning btn-lg custom-button" data-toggle="modal" data-target="#InviteLGModal">Invite User</button>
+    @{
+        VMInviteLG Invite = new VMInviteLG();
+        Invite.Group = Model.Group;
+    }
+
+    @await Html.PartialAsync("PartialView/InviteToLunchGroup", Invite)
+
+
+    <button class="btn btn-warning btn-lg custom-button" data-toggle="modal" data-target="#exampleModalLong">Create New Event</button>
+
+
+    @await Html.PartialAsync("PartialView/CreateLunchEventForGroup", Model)
+
+    <div class="UpcEventsSection">
+        <h3>Upcoming Events</h3>
+        @if (Model.Group.Events.Any())
+        {
+            <ul class="list-group">
+                @foreach (var evt in Model.Group.Events.OrderByDescending(e => e.EventStartTime))
+                {
+                    <li class="list-group-item">
+                        <a href="@Url.Action("DisplayEvent", "Event", new { eventId = evt.EventId })">@evt.Name</a>
+                        - @evt.EventStartTime.ToString("yyyy-MM-dd")
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No upcoming events found.</p>
+        }
+    </div>
+
+    <div class="GroupUserSection">
+        <h3>Group Users</h3>
+        <ul class="list-group list-unstyled">
+            <li class="list-group-item bg-primary text-white">
+                <span class="font-weight-bold">Name</span> | <span class="font-weight-bold">Email Address</span>
+            </li>
+            @if (Model.Group.Users != null && Model.Group.Users.Any())
+            {
+                foreach (var user in Model.Group.Users)
+                {
+                    <li class="list-group-item">
+                        <span>@user.UserName</span> | <span>@user.EmailAddress</span>
+                        @if (user.UserType == "ADMIN")
+                        {
+                            <span class="admin-crown">&#x1f451;</span>
+                        }
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="list-group-item">
+                    <p>No users exist in the group.</p>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

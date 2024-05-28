@@ -1,0 +1,30 @@
+﻿.custom-button {
+    color: #004B91;
+    margin-top: 10px;
+}
+
+#email {
+    border: 2px solid #004B91;
+}
+
+h2, #success-message, #error-message {
+    color: #004B91;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.well {
+    width: 250px;}
+
+/* Define the custom style for the disabled button */
+.custom-button:disabled {
+    background-color: grey;
+    color: white;
+}
+#UserListTable {
+    padding-top: 5em;
+}

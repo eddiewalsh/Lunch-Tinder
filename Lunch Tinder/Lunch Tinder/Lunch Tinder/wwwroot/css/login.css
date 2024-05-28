@@ -1,0 +1,101 @@
+﻿html {
+    font-size: 14px;
+    background-color: #004B91;
+    position: relative;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 0;
+    background-color: #004B91;
+}
+
+.container-login {
+    max-width: 400px;
+    margin: 190px auto 0;
+    background-color: #ffffff;
+    padding: 60px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-color: #fbbc34;
+    text-decoration-thickness: 3px;
+    margin-top: 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666666;
+    font-size: 14px;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    background-color: transparent;
+    color: #333333;
+    transition: border-color 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #FFD700;
+}
+
+.button-container {
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#LoginBttn {
+    background-color: #004B91;
+    margin-top: 10px;
+    padding: 20px 40px;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: large;
+    flex-direction: column;
+}
+
+.validation-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    flex-direction: column;
+}

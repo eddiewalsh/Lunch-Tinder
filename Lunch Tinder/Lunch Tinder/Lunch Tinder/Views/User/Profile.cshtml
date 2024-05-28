@@ -1,0 +1,188 @@
+﻿@model Lunch_Tinder.ViewModels.VMProfile
+
+<link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+
+<div class="profile-container" onload="checkUsernameRequirements();">
+    <h1>Profile</h1>
+    <div class="error-message">
+        @Html.Encode(ViewData["ErrorMessage"])
+    </div>
+    <div class="validation-message">
+        @Html.Encode(ViewData["ValidateMessage"])
+    </div>
+    <form asp-action="Profile" method="post" class="profile-form">
+        <input type="hidden" asp-for="User.UserId" />
+        <input type="hidden" asp-for="User.EmailAddress" />
+        <input type="hidden" asp-for="User.Password" />
+        <input type="hidden" asp-for="User.UserType" />
+        <input type="hidden" asp-for="User.LunchGroups" />
+        <label asp-for="User.UserName">Username</label>
+        <input asp-for="User.UserName" type="text" id="usernameInput" maxlength="30" pattern="[A-Za-z0-9]{6,30}" value="@Model.User?.UserName" />
+         <div class="username-requirements">
+             <span id="namerequirement1" class="username-requirement">6 - 20 Characters </span>
+             <span id="namerequirement4" class="username-requirement">No symbols</span>
+         </div>
+        <label>Email Address</label>
+        <p>@Model.User?.EmailAddress</p>
+        <div class="profile-update">
+            <button type="submit" id="SaveUsernameBttn" class="update-button">Save</button>
+        </div>
+        <div class="profile-reset">
+            <label for="resetPassword">Reset Password</label>
+            <button type="button" class="reset-button" id="ResetPasswordBttn">Reset Password</button>
+        </div>
+    </form>
+</div>
+<div class="password-container">
+    <h1>Reset Password</h1>
+    <div class="error-message">
+        @Html.Encode(ViewData["ErrorMessage"])
+        @if (Html.Encode(ViewData["ErrorMessage"]).Equals("Incorrect password") || Html.Encode(ViewData["ErrorMessage"]).Equals("New password cannot be empty")
+        ||Html.Encode(ViewData["ErrorMessage"]).Equals("New password does not match confrimation password") || Html.Encode(ViewData["ErrorMessage"]).Equals("Confirm your new password"))
+        {
+            <script>
+                    function KeepPasswordFormVisible() {
+                        document.querySelector('.password-container').style.display = 'block';
+                        document.querySelector('.profile-container').style.display = 'none';
+                    }
+                    KeepPasswordFormVisible();
+          </script>
+        }
+    </div>
+    <div class="validation-message">
+        @Html.Encode(ViewData["ValidateMessage"])
+    </div>
+    <form asp-action="ResetPassword" method="post" class="profile-form" id="passwordform">
+        <input type="hidden" asp-for="User.UserId" />
+        <input type="hidden" asp-for="User.EmailAddress" />
+        <input type="hidden" asp-for="User.UserName" />
+        <input type="hidden" asp-for="User.UserType" />
+        <input type="hidden" asp-for="User.LunchGroups" />
+        <label asp-for="OldPassword">Password</label>
+        <input asp-for="OldPassword" type="password" id="oldpasswordInput" />
+        <label asp-for="NewPassword">New Password</label>
+        <input asp-for="NewPassword" type="password" id="newpasswordInput"/>
+        <div class="password-requirements">
+             <span id="requirement1" class="password-requirement">1 lowercase letter </span>
+             <span id="requirement2" class="password-requirement">1 uppercase letter</span>
+             <span id="requirement3" class="password-requirement">1 number</span>
+             <span id="requirement4" class="password-requirement">1 symbol</span>
+             <span id="requirement5" class="password-requirement">6 - 20 characters</span>
+         </div>
+        <label asp-for="ConfirmNewPassword">Confirm New Password</label>
+        <input asp-for="ConfirmNewPassword" type="password" id="confirmnewpasswordInput"/>
+        <div class="password-update">
+            <button type="submit" id="SaveNewPasswordBttn" class="password-button">Save</button>
+        </div>
+        <div class="profile-reset">
+            <label for="backProfile">Profile</label>
+            <button type="button" class="profile-button" id="BackProfileBttn">Back To Profile</button>
+        </div>
+    </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+  const profileContainer = document.querySelector('.profile-container');
+  const passwordContainer = document.querySelector('.password-container');
+  const resetPasswordButton = document.querySelector('.reset-button');
+  const backToProfileButton = document.querySelector('.profile-button');
+
+  resetPasswordButton.addEventListener('click', function () {
+    profileContainer.style.display = 'none';
+    passwordContainer.style.display = 'block';
+  });
+
+  backToProfileButton.addEventListener('click', function () {
+    passwordContainer.style.display = 'none';
+    profileContainer.style.display = 'block';
+  });
+
+  //Check Username requirements
+  let usernameInput = document.getElementById("usernameInput");
+  let usernameRequirements = document.querySelector(".username-requirements");
+
+  // Get the username requirements elements
+  let namerequirement1 = document.getElementById("namerequirement1");
+  let namerequirement4 = document.getElementById("namerequirement4");
+
+  // Get the register button element
+  let button = document.getElementById("SaveUsernameBttn");
+
+  // Event handler when the username input gains focus
+  usernameInput.addEventListener("focus", function () {
+    // Show the username requirements
+    usernameRequirements.style.display = "flex";
+    usernameRequirements.style.flexDirection = "column";
+    usernameRequirements.style.paddingBottom = "20px";
+  });
+
+  // Event handler on username input blur
+  usernameInput.addEventListener("blur", function () {
+    usernameRequirements.style.display = "none";
+  });
+
+  // Event handler on username input keyup
+  usernameInput.addEventListener("keyup", function () {
+    // Get the entered username value
+    var username = usernameInput.value.trim();
+
+    usernameInput.style.outline = "none";
+    namerequirement1.style.color = (username.length >= 6 && username.length <= 20) ? "green" : "red";
+    namerequirement4.style.color = /^[a-zA-Z0-9]+$/.test(username) ? "green" : "red";
+
+    let isValidLength = (username.length >= 6 && username.length <= 20);
+    let isAlphanumeric = /^[a-zA-Z0-9]+$/.test(username);
+
+    usernameInput.style.borderColor = (isValidLength && isAlphanumeric) ? "green" : "red";
+    button.disabled = !(isValidLength && isAlphanumeric);
+  });
+
+  //Check Password Requirements
+  let passwordInput = document.getElementById("newpasswordInput");
+  let passwordRequirements = document.querySelector(".password-requirements");
+  let passwordbutton = document.getElementById("SaveNewPasswordBttn");
+
+  // Get the password requirements elements
+  let requirement1 = document.getElementById("requirement1");
+  let requirement2 = document.getElementById("requirement2");
+  let requirement3 = document.getElementById("requirement3");
+  let requirement4 = document.getElementById("requirement4");
+  let requirement5 = document.getElementById("requirement5");
+
+  // Event handler when the password input gains focus
+  passwordInput.addEventListener("focus", function () {
+    // Show the password requirements
+    passwordRequirements.style.display = "flex";
+    passwordRequirements.style.flexDirection = "column";
+    passwordRequirements.style.paddingBottom = "20px";
+  });
+
+  // Event handler when the password input loses focus
+  passwordInput.addEventListener("blur", function () {
+    // Hide the password requirements
+    passwordRequirements.style.display = "none";
+  });
+
+  // Event handler on password input keyup
+  passwordInput.addEventListener("keyup", function () {
+    // Get the entered password value
+    var password = passwordInput.value;
+
+    // Check if the password meets the requirements and update the requirements elements
+        requirement1.style.color = /[a-z]/.test(password) ? "green" : "red";
+        requirement2.style.color = /[A-Z]/.test(password) ? "green" : "red";
+        requirement3.style.color = /\d/.test(password) ? "green" : "red";
+        requirement4.style.color = /[^a-zA-Z0-9]/.test(password) ? "green" : "red";
+        requirement5.style.color = password.length >= 6 && password.length <= 20 ? "green" : "red";
+
+          passwordbutton.disabled = !(
+                    /[a-z]/.test(password) &&
+                    /[A-Z]/.test(password) &&
+                    /\d/.test(password) &&
+                   /[^a-zA-Z0-9]/.test(password) &&
+                   password.length >= 8 && password.length <= 20
+                  );
+    });
+  });
+
+</script>

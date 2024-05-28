@@ -1,0 +1,23 @@
+﻿.container {
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#saveButton {
+    margin-top: 10px;
+}
+
+#InviteUsers {
+    margin-right: 10px;
+}
+
+.GroupUserSection {
+    margin-top: 20px;
+}
+
+.UpcEventsSection {
+    margin-top: 20px;
+}

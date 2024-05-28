@@ -1,0 +1,82 @@
+﻿@using Lunch_Tinder.ViewModels;
+@model ManageUsersViewModel
+
+<link rel="stylesheet" href="~/css/mangeUser.css" asp-append-version="true" />
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="well">
+                    <h2>Invite User</h2>
+                    <form id="inviteForm" method="post" action="/ManageUsers/SendInvitation" onsubmit="return validateForm()">
+                        @Html.AntiForgeryToken()
+                        <div class="input-group">
+                            <input class="btn btn-lg" name="EmailAddress" id="email" type="email" placeholder="Enter Email" required>
+                        </div>
+                        <button class="btn btn-warning btn-lg custom-button" type="submit" id="submitButton">Invite New User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="success-message">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="error-message">@TempData["ErrorMessage"]</div>
+}
+
+<div id="UserListTable" class="text-center">
+    <h1 class="display-4">List of Users Invited</h1>
+    @if (Model.Paginations == null || !Model.Paginations.Any())
+    {
+        <p>No Users exist</p>
+    }
+    else
+    {
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>User Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var invite in Model.Paginations)
+                {
+                    <tr>
+                        <td>@invite.UserName</td>
+                        <td>@invite.EmailAddress</td>
+                        <td>@invite.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@{
+    var prevDisabled = !Model.Paginations.PreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Paginations.NextPage ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-pageIndex="@(Model.Paginations.PageIndex - 1)"
+   asp-route-pageSize="@Model.Paginations.PageSize"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+
+<a asp-action="Index"
+   asp-route-pageIndex="@(Model.Paginations.PageIndex + 1)"
+   asp-route-pageSize="@Model.Paginations.PageSize"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>

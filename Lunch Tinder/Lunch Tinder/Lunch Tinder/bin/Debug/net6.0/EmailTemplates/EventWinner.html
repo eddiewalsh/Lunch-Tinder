@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Event Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #003366;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto 0;
+            background-color: #ffffff;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: black;
+            text-decoration: underline;
+            text-decoration-color: #fbbc34;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #fbbc34;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .buttons {
+            padding-left: 130px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi {{Username}}</h1>
+        <p>The votes are in!</p>
+        <p>Voting for the {{EventName}} has closed, and will be held at {{winner}} ! </p>
+        <p>Event Start Time: {{EventStartTime}}</p>
+        <div class="buttons">
+            <a href="{{link}}">View Event</a>
+        </div>
+    </div>
+</body>
+</html>

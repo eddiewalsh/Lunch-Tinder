@@ -1,0 +1,187 @@
+﻿  @model Lunch_Tinder.ViewModels.VMEventPage;
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<link rel="stylesheet" href="~/css/lunchgroupevent.css" asp-append-version="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div class="event-container">
+   <div class="alert alert-success"> Vote Added Successfully! </div>
+    <div class="name-date-container">
+        <h1>@Model?.selectedEvent?.Name</h1>
+            <div class="description">
+                <h5>@Model?.selectedEvent?.Description</h5>
+              </div>
+            <div class="datetime-group">
+                <h6>Event Start Time: @Model?.selectedEvent?.ConvertOffsetToLocalTime(Model.selectedEvent.EventStartTime)</h6>
+            </div>
+        </div>
+        <div class="winning-result">
+            @if (!string.IsNullOrWhiteSpace(ViewData["Winner"].ToString()))
+            {
+                <h7 id="winner">&#x1f451; @ViewData["Winner"]</h7>
+            }
+        </div>
+        <div id="votingstatuscontainer" class="votingstatus-group">
+              <h7 id="votingstatus">@ViewData["VotingStatus"]</h7>
+         </div>
+ <div id="votingpanel" class="votinginprogress-panel">
+    <div class="votingoptions-group">
+            @foreach (Restaurant? venue in Model.selectedEvent.RestaurantOptions)
+            {
+                if(Model?.vote != null && Model.vote.RestaurantVoteID.Equals(venue.RestaurantID))
+                {
+                   <div class="votingoption" id="@venue.RestaurantID">
+                        <button style="color:white; background-color: green;" type="button" onclick="submitVote(this,@venue.RestaurantID,@Model.selectedEvent.EventId)">@venue.RestaurantName</button>
+                    </div>
+                }
+                else
+                {
+                   <div class="votingoption" id="@venue.RestaurantID">
+                       <button type="button" onclick="submitVote(this,@venue.RestaurantID,@Model.selectedEvent.EventId)">@venue.RestaurantName</button>
+                   </div>     
+                }
+            }
+    </div>
+</div>
+    <button id="customBackButton" onclick="GoBack()">Back</button>
+        @if (Model.user.UserType == "ADMIN")
+        {
+          <button id="editbutton" class="edit-button" onclick="openEditModal()">Edit</button>
+        }
+</div>
+</div>
+@using (Html.BeginForm("EditEvent", "Event", FormMethod.Post))
+{	
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Edit Event</h5>
+                        <button type="button" id="closeModalbttn" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" asp-for="@Model.selectedEvent.EventId" />
+                        <input type="hidden" asp-for="@Model.selectedEvent.Name" />
+                        <input type="hidden" asp-for="@Model.selectedEvent.Description" />
+                        <input type="hidden" asp-for="@Model.selectedEvent.VotingStartTime" />
+                        <input type="hidden" asp-for="@Model.selectedEvent.EventEndTime" />
+                        <input type="hidden" asp-for="@Model.selectedEvent.EventStartTime" />
+                        <input type="hidden" asp-for="@Model.selectedEvent.Status" />
+                        <input type="hidden" asp-for="@Model.selectedEvent.VenueWinner" />
+
+                        <label for="EditedVoteEndDate">Voting End Date:</label>
+                        <input  type="date" id="EditedVoteEndDate" name="EditedVoteEndDate" required min="@DateTime.Now.ToString("yyyy-MM-dd")" max="2050-01-01" onchange="updateEventTimeMax()">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="editeventclose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" id="editeventsave"class="btn btn-primary">Save changes</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+<script>
+    function openEditModal() {
+    $('#editModal').modal('show');
+}
+
+var votingstatus = document.getElementById("votingstatus");
+var votingpanel = document.getElementById("votingpanel");
+var votingstatuscontainer = document.getElementById("votingstatuscontainer");
+var winner = document.getElementById("winner")
+
+var message = document.getElementById("votingstatus").textContent;
+
+
+if (message === "Voting In Progress") {
+    votingpanel.style.display = "block";
+    votingstatuscontainer.style.borderRadius = "10px";
+    votingstatuscontainer.style.color = "green";
+    winner.style.display = "none";
+} else if (message === "Voting Closed") {
+    votingpanel.style.display = "none";
+    votingstatuscontainer.style.color = "red";
+    winner.style.display = "block";
+}
+else {
+    votingpanel.style.display = "none";
+    votingstatuscontainer.style.color = "#004B91";
+}
+
+function submitVote(button, restaurantId, eventId) {
+    $.ajax({
+        type: "POST",
+        url: "/Event/VoteInEvent",
+        data: {
+            eventid: eventId,
+            restaurantid: restaurantId
+        },
+        success: function (result) {
+            console.log(result);
+            handleButtonClick(button);
+        },
+        error: function (error) {
+            console.log(error); //print error
+        }
+    });
+}
+
+function handleButtonClick(button) {
+    var buttons = document.getElementsByTagName('button');
+    var backbttn = document.getElementById('customBackButton');
+    var editbttn = document.getElementById('editbutton');
+    var editclosebttn = document.getElementById('editeventclose');
+    var editsavebttn = document.getElementById('editeventsave');
+    var closeModal = document.getElementById('closeModalbttn');
+    //var container = button.parentNode.parentNode; // Get the parent container of the clicked button
+    $('.alert').show();
+
+    for (var i = 0; i < buttons.length; i++) {
+        if (buttons[i] === button) {
+            buttons[i].style.backgroundColor = 'green';
+            buttons[i].style.color = 'white';
+        } else {
+            buttons[i].style.backgroundColor = '#fbbc34';
+            buttons[i].style.color = 'black';
+        }
+
+         backbttn.style.color = 'white';
+         backbttn.style.backgroundColor = '#004B91';
+
+         try {       
+            editbttn.style.backgroundColor = 'black';
+            editbttn.style.color = 'white';
+            editclosebttn.style.backgroundColor = 'grey';
+            editclosebttn.style.color = 'white';
+            editsavebttn.style.backgroundColor = '#0D6EFD';
+            editsavebttn.style.color = 'white';
+            closeModal.style.backgroundColor = 'white';
+            closeModal.style.color = 'grey';
+        } catch (error) {
+            
+        }
+    }
+
+    setTimeout(function () {
+        $(".alert").hide();
+    }, 4000);
+
+}
+
+function displayAlert() {
+    $('.alert').show();
+
+    setTimeout(function () {
+        $(".alert").alert('close');
+    }, 4000);
+}
+
+function GoBack() {
+    window.history.back();
+}
+</script>

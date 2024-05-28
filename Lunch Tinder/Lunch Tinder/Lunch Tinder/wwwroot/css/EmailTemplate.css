@@ -1,0 +1,23 @@
+﻿body {
+    background-image: url("/images/background.png");
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+h2 {
+    color: #fbbc34;
+    text-decoration: underline;
+}
+
+a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fbbc34;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+}

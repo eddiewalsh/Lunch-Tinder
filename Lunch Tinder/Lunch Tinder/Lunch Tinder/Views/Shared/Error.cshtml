@@ -1,0 +1,25 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+<link rel="stylesheet" href="~/css/error.css" asp-append-version="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<div class="error-container">
+    <div class="message-container">
+        <h1>Oops! Something Went Wrong</h1>
+    </div>
+    <div class="image-container">
+        <img src="~/images/noserviceerrormessage.png" alt="error message icon" width="400" height="400">
+    </div>
+    <div class="button-container">
+       <button type="button" class="homepage-button" id="homepagebutton" onclick="redirectToHomePage()">Return Home</button>
+    </div>
+</div>
+<script>
+  function redirectToHomePage() {
+    var url = '@Url.Action("Login", "User")';
+    window.location.href = url;
+  }
+</script>

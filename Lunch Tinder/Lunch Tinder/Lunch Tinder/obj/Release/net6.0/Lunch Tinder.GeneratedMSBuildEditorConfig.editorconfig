@@ -1,0 +1,99 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Lunch_Tinder
+build_property.RootNamespace = Lunch_Tinder
+build_property.ProjectDir = C:\Users\eddie\Desktop\Lunch Tinder\Lunch Tinder\Lunch Tinder\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\eddie\Desktop\Lunch Tinder\Lunch Tinder\Lunch Tinder
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Admin/AdminHomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5Ib21lUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Admin/ManageGroups.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlR3JvdXBzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Admin/ManageUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Admin/PartialView/CreateLunchEventForGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGFydGlhbFZpZXdcQ3JlYXRlTHVuY2hFdmVudEZvckdyb3VwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Admin/PartialView/InviteToLunchGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGFydGlhbFZpZXdcSW52aXRlVG9MdW5jaEdyb3VwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/LunchGroupUser/LGUHomePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVuY2hHcm91cFVzZXJcTEdVSG9tZVBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/LunchGroupUser/LunchGroupEvent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVuY2hHcm91cFVzZXJcTHVuY2hHcm91cEV2ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/LunchGroupUser/ViewLunchGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVuY2hHcm91cFVzZXJcVmlld0x1bmNoR3JvdXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/LunchGroupUser/ViewLunchGroupDetailsLGU.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTHVuY2hHcm91cFVzZXJcVmlld0x1bmNoR3JvdXBEZXRhaWxzTEdVLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/User/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/User/LunchGroupDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMdW5jaEdyb3VwRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/User/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eddie/Desktop/Lunch Tinder/Lunch Tinder/Lunch Tinder/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-1gk7rm6pb3

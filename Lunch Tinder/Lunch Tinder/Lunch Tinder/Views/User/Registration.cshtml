@@ -1,0 +1,61 @@
+﻿@model Lunch_Tinder.ViewModels.VMRegistration;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width"/>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <link rel="stylesheet" href="~/css/register.css" asp-append-version="true" />
+    </head>
+<body onload="validateEmail(); validateUsername(); validatePasswords(); checkPasswordRequirements(); checkUsernameRequirements();">
+    <div class="container">
+        <h2><span class="underline">Registration</span></h2>
+        <div class="error-message">
+            @ViewData["ValidateMessage"]
+            <span id="emailValidationMessage"></span>
+            <span id="usernameValidationMessage"></span>
+            <span id="passwordValidationMessage"></span>
+        </div>
+        <form asp-controller="User" asp-action="Registration" method="post">
+            <div class="Email-Group">
+                <label asp-for="EmailAddress">Email:</label>
+                <span id="emailInput">@Model.EmailAddress</span>
+                <input asp-for="EmailAddress" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName">Username:</label>
+                <input asp-for="UserName"  type="text" id="usernameInput" name="username" pattern="[A-Za-z0-9]{6,30}" required/>
+            </div>
+             <div class="username-requirements">
+                <span id="namerequirement1" class="username-requirement">6 - 20 Characters </span>
+                <span id="namerequirement4" class="username-requirement">No symbols</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Password:</label>
+                <input asp-for="Password" type="password" id="passwordInput" onclick="showPasswordRequirements()" name="password"  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!]).{8,20}$" required />
+            </div>
+            <div class="password-requirements">
+                <span id="requirement1" class="password-requirement">1 lowercase letter </span>
+                <span id="requirement2" class="password-requirement">1 uppercase letter</span>
+                <span id="requirement3" class="password-requirement">1 number</span>
+                <span id="requirement4" class="password-requirement">1 symbol</span>
+                <span id="requirement5" class="password-requirement">6 - 20 characters</span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmationPassword">Confirm Password:</label>
+                <input asp-for="ConfirmationPassword" type="password" id="confirmpassword" name="confirm-password"  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!]).{8,}$" required />
+            </div>
+            <div class="form-link">
+                <label for="login">Already a user? <a href="@Url.Action("LogIn", "User")" class="login-link">Log In</a></label>
+            </div>
+            <div class="form-button">
+                <input id="RegisterBttn" type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

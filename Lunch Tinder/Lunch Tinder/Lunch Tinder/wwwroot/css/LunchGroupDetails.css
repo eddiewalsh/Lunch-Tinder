@@ -1,0 +1,44 @@
+﻿.container{
+   margin-bottom: 20px;
+
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#saveButton {
+    margin-top: 10px;
+}
+
+#InviteUsers{
+    margin-right:10px;
+}
+
+.GroupUserSection{
+    margin-top:20px;
+}
+
+.UpcEventsSection {
+    margin-top: 20px;
+}
+
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#toast {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hide {
+    display: none;
+}

@@ -1,0 +1,59 @@
+﻿h1 {
+    color: #004B91;
+}
+
+.card-title {
+    color: #004B91;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: black;
+}
+
+#UserListTable{
+    padding-top:5em;
+}
+
+.EmptyLGMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+.card {
+    width: 20rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.GroupCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-body {
+    flex-grow: 1;
+}
+
+.card-footer {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}

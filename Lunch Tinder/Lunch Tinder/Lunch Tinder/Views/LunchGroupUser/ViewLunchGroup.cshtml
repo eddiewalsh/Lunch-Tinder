@@ -1,0 +1,40 @@
+﻿@model LunchGroup
+
+<link rel="stylesheet" href="~/css/viewlunchgroup.css" asp-append-version="true" />
+
+<div class="sidebar">
+   <div class="members">
+        <h2>   Members  </h2>
+            <ul class="member-list">
+                @foreach (User user in Model?.Users)
+                {
+                    <li>@user.UserName </li>
+                }
+            </ul>
+    </div>
+ </div>
+    <div class="container">
+  <div class="introduction">
+    <fieldset>
+            <legend>@Model.GroupName</legend>
+            <p id="description">@Model.Description</p>
+        </fieldset>
+    </div>
+    <div class="event">
+      <h3>Current Event</h3>
+      <p>Details about the current event.</p>
+    </div>
+
+    <div class="event">
+      <h3>Upcoming Events</h3>
+      <p>Details about the upcoming event.</p>
+    </div>
+    </div>
+ <script>
+    var descriptionElement = document.getElementById("description");
+    var maxCharacters = 50; 
+
+    if (descriptionElement.textContent.length > maxCharacters) {
+        descriptionElement.innerHTML = descriptionElement.innerHTML.replace(/(.{50})/g, "$1<br>");
+    }
+</script>
